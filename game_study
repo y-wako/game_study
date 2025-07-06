@@ -1,0 +1,41 @@
+def two_player_game():
+    #最初に２つの整数a,bを決める
+    a =int(input("最初の整数aを入力する:"))
+    b =int(input("最初の整数bを入力する:"))
+    
+    #プレイヤー名を設定
+    player1 = "プレイヤー１"
+    player2 = "プレイヤー2"
+    
+    #使用された数を格納する
+    used_numbers = set()
+    
+    #現在のプレイヤーを設定
+    current_player = player1
+    
+    while True:
+        #現在のプレイヤーに数を入力させる
+        number =int(input(f"{current_player}は{a}から{b}までの整数を１つ言うこと"))
+    
+        #入力された数が範囲内かどうかチェック
+        if number < a or number > b:
+            print(f"{current_player}は無効な数を言っているよ。{a}から{b}までの整数を言ってね")
+            continue
+    
+        #入力された数がすでに使用されているかをチェック
+        if number in used_numbers:
+            print(f"{current_player}は既に使用された数を言っているよ。{current_player}は負けたよ")
+            break
+    
+        #使用された数を格納
+        used_numbers.add(number)
+    
+        #入力された数がbと同じかチェック
+        if number == b:
+            print(f"{current_player}は最後に{b}を言ったよ。{current_player}の勝ちだよ")
+        
+        #プレイヤーを交代
+        current_player = player2 if current_player == player1 else player1
+    
+#ゲーム開始！
+two_player_game()
